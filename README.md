@@ -1,36 +1,31 @@
 # W7-Kaggle_competition
 
-![portada](https://github.com/Ironhack-Data-Madrid-Enero-2021/W7-Kaggle_competition/blob/main/images/PORTADA.jpg)
+# Readme
 
-## Description
+Este script de Python se utiliza para el preprocesamiento, modelado y visualización de datos. El script requiere tener instaladas las siguientes librerías: numpy, pandas, scipy, scikit-learn, imblearn, matplotlib, y seaborn.
 
-- Find the best machine learning model and params for a given dataset. 
+# Preprocesamiento de datos
 
-## Instructions
+El script importa primero las librerías necesarias para el preprocesamiento de datos, incluyendo la imputación de datos (usando SimpleImputer, IterativeImputer, y KNNImputer), la estandarización de datos (usando MinMaxScaler, StandardScaler, y RobustScaler), y la codificación (usando LabelEncoder, OneHotEncoder, y OrdinalEncoder). El script también incluye métodos de remuestreo como el submuestreo y el sobremuestreo mediante RandomUnderSampler y RandomOverSampler.
 
-Find the Kaggle competition with your cohort name, i.e. **diamonds-datamad1022-part**, link [here](https://www.kaggle.com/competitions/diamonds-datamad1022/overview)
-### train.csv
-* 1. **Processing/cleaning** the dataset: this should be later modularized in functions.
-* 2. **Train** a model (fit & predict) with the data in `train.csv`. This file does contain a **y**.
-        - Do *train, test, split* on `train.csv` if necessary.
-        - Choose the best model regarding the metrics. In this case, the lowest MSE (error).
+# Visualización
 
-        2.1. **Export** the model: we don't want to invest time/RAM resources on training the model again in the future.
+El script importa matplotlib y seaborn para la visualización de datos. El script crea varios gráficos, incluyendo un histograma, un gráfico de distribución y un gráfico de caja, para visualizar la distribución y correlación de las variables.
 
-### test.csv
-* 3. Apply the same **cleaning** to `test.csv`. This files does NOT contain a **y**.
-* 4. We'll apply the already **trained model** from step 2 to the `text.csv` file. With this we'lñl generate a new column with the predicted values.  
+# Modelado
 
-### my_submission.csv
-* 5. Generate a `submission.csv` file with only two columns: the **ID** of the diamond & the predicted **price** (y).
+El script importa varias librerías de aprendizaje automático, incluyendo LogisticRegression, LinearRegression, RandomForestClassifier, DecisionTreeClassifier, RandomForestRegressor, DecisionTreeRegressor, KNeighborsRegressor, y GradientBoostingRegressor. El script también incluye métodos de validación cruzada y búsqueda en cuadrícula mediante cross_val_score y GridSearchCV. El script guarda el modelo entrenado usando pickle.
 
+# Configuración
 
-## Deliverables
+El script también incluye ajustes de configuración para advertencias y matplotlib para una mejor visualización.
 
-- **Jupyter notebooks** where you show the process you followed to get to your submissions.
+# Conjunto de datos
 
-- A **slide** (.ppt, ipynb, etc) with a summary of the metrics you obtained and the rationale behind it. 
-    - Why do those params work better than others?
+El script importa los datos usando pandas. Lee sample_submission.csv, test.csv, y train.csv y crea una copia del conjunto de datos de entrenamiento (df). A continuación, el script realiza un análisis exploratorio de los datos comprobando los tipos de datos, el número de valores nulos y el número de puntos de datos duplicados.
 
-## Tips
-- Take advantage of the daily submissions. Try at least one today!
+El script crea varias visualizaciones para explorar la relación entre las variables y la variable objetivo. Crea un gráfico de histograma, un gráfico de distribución, un gráfico de caja y una matriz de correlación.
+
+Por último, compruebo cuál es el mejor modelo en base al MSE y al R2, decantándome por el Gradient Boosting ya que es el que mejor métricas tiene.
+
+Nota: este README asume que el conjunto de datos se encuentra en una carpeta llamada "data" en el mismo directorio que el script de Python.
