@@ -8,7 +8,7 @@ Este script de Python se utiliza para el preprocesamiento, modelado y visualizac
 
 # Preprocesamiento de datos
 
-El script importa primero las librerías necesarias para el preprocesamiento de datos, incluyendo la imputación de datos (usando SimpleImputer, IterativeImputer, y KNNImputer), la estandarización de datos (usando MinMaxScaler, StandardScaler, y RobustScaler), y la codificación (usando LabelEncoder, OneHotEncoder, y OrdinalEncoder). El script también incluye métodos de remuestreo como el submuestreo y el sobremuestreo mediante RandomUnderSampler y RandomOverSampler.
+El script importa primero las librerías necesarias para el preprocesamiento de datos, incluyendo la imputación de datos (usando SimpleImputer, IterativeImputer, y KNNImputer), la estandarización de datos (usando MinMaxScaler, StandardScaler, y RobustScaler), y la codificación (usando LabelEncoder, OneHotEncoder, y OrdinalEncoder).
 
 # Visualización
 
@@ -22,17 +22,34 @@ El script importa varias librerías de aprendizaje automático, incluyendo Logis
 
 El script también incluye ajustes de configuración para advertencias y matplotlib para una mejor visualización.
 
-# Resumen
 
-El script importa los datos usando pandas. Lee sample_submission.csv, test.csv, y train.csv y crea una copia del conjunto de datos de entrenamiento (df). A continuación, el script realiza un análisis exploratorio de los datos comprobando los tipos de datos, el número de valores nulos y el número de puntos de datos duplicados.
+# Análisis exploratorio de datos y ajuste de modelos
 
-El script crea varias visualizaciones para explorar la relación entre las variables y la variable objetivo. Crea un gráfico de histograma, un gráfico de distribución, un gráfico de caja y una matriz de correlación.
+Este proyecto tiene como objetivo realizar el análisis exploratorio de un conjunto de datos para visualizar la distribución de los datos, la correlación entre las variables, y estandarizar y codificar las variables para su posterior análisis de modelos de predicción.
+
+## Análisis exploratorio
+
+Se utiliza la función `value_counts()` para ver la frecuencia de los valores de la variable "price". Luego, se grafica la distribución de la variable "price" utilizando el gráfico `displot` de Seaborn. Se presentan los estadísticos descriptivos para las variables numéricas y categóricas con la función `describe()`. Posteriormente, se grafica la distribución para cada variable numérica utilizando el gráfico `histplot` de Seaborn.
+
+En la siguiente sección, se grafica la relación entre las variables predictoras y la variable a predecir con la función `countplot` de Seaborn. Se verifica si las variables tienen un orden o no y se ve el ratio y la distribución de las variables no numéricas respecto al "price".
 
 ![Subplot](/images/Subplot.png)
 
 Con este subplot visualizamos si hay orden o no en nuestras variables no numéricas, de cara a qué tipo de encoding utlizar más adelante. En este caso vemos que se aprecia cierto orden entre las variables, por lo que me decanto por un OrdinarEncoder.
 
-Por último, compruebo cuál es el mejor modelo en base al MSE y al R2, decantándome por el Gradient Boosting ya que es el que mejor métricas tiene. Aunque aparentemente el Decision Tree I es el que tiene los mejores parámetros, tiene un poco ce overfiteo, ya que las diferecnias entre el train y el test son más notables en el MSE.
+Después, se visualizan los outliers con el gráfico `boxplot` de Seaborn y se crea una matriz de correlación con el gráfico `heatmap` de Seaborn.
+
+## Preparación de los datos
+
+Se estandarizan las variables numéricas con el método `RobustScaler()` de scikit-learn y se codifican las variables categóricas con el método `OrdinalEncoder()`. Los resultados se guardan en archivos .pkl.
+
+## Ajuste de modelos
+
+El objetivo es crear un modelo para predecir los precios de las viviendas en una ciudad, usando la regresión lineal y árboles de decisión. El código primero carga los datos y los prepara, dividiéndolos en conjuntos de entrenamiento y prueba, y luego ajusta un modelo de regresión lineal a los datos de entrenamiento. Luego se hacen predicciones para los conjuntos de entrenamiento y prueba y se comparan con los valores reales. El código también genera visualizaciones para los valores reales y predichos, así como para los residuos del modelo. Se define una función para calcular varias métricas de evaluación del modelo, como el error absoluto medio, el error cuadrático medio y el coeficiente de determinación R². Finalmente, se ajusta un modelo de árbol de decisión y se realiza otra evaluación del modelo utilizando la misma función de métricas. El código también define un diccionario con los hiperparámetros para ajustar el modelo de árbol de decisión utilizando la búsqueda en cuadrícula.
+
+## Evaluación del modelo
+
+Se comparan los resultados de los modelos utilizando medidas de rendimiento como R2 y MSE. Se utiliza la función de métricas definida previamente para calcular las métricas de evaluación del modelo. Decantándome por el Gradient Boosting ya que es el que mejor métricas tiene. Aunque aparentemente el Decision Tree I es el que tiene los mejores parámetros, tiene un poco ce overfiteo, ya que las diferecnias entre el train y el test son más notables en el MSE.
 
 ![Subplot2](/images/Subplot_modelo.png)
 
