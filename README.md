@@ -49,7 +49,7 @@ El objetivo es crear un modelo para predecir los precios de los diamantes, usand
 
 ## Evaluación del modelo
 
-Se comparan los resultados de los modelos utilizando medidas de rendimiento como R2 y MSE. Se utiliza la función de métricas definida previamente para calcular las métricas de evaluación del modelo. Decantándome por el Gradient Boosting ya que es el que mejor métricas tiene. Aunque aparentemente el Decision Tree I es el que tiene los mejores parámetros, tiene un poco ce overfiteo, ya que las diferecnias entre el train y el test son más notables en el MSE.
+Se comparan los resultados de los modelos utilizando medidas de rendimiento como R² y MSE. Se utiliza la función de métricas definida previamente para calcular las métricas de evaluación del modelo. Decantándome por el Gradient Boosting ya que es el que mejor métricas tiene. Aunque aparentemente el Decision Tree I es el que tiene los mejores parámetros, tiene un poco de overfiteo, ya que las diferencias entre el train y el test son más notables en el MSE.
 
 ![Subplot2](/images/Subplot_modelo.png)
 
