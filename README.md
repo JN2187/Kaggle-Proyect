@@ -54,6 +54,6 @@ Se comparan los resultados de los modelos utilizando medidas de rendimiento como
 ![Subplot2](/images/Subplot_modelo.png)
 
 
-![Result](/Result.png)
+![Result](/images/Result.png)
 
 Nota: este README asume que el conjunto de datos se encuentra en una carpeta llamada "data" en el mismo directorio que el script de Python.
