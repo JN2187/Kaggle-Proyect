@@ -33,8 +33,6 @@ Se utiliza la función `value_counts()` para ver la frecuencia de los valores de
 
 En la siguiente sección, se grafica la relación entre las variables predictoras y la variable a predecir con la función `countplot` de Seaborn. Se verifica si las variables tienen un orden o no y se ve el ratio y la distribución de las variables no numéricas respecto al "price".
 
-![Subplot](/images/Subplot.png)
-
 Con este subplot visualizamos si hay orden o no en nuestras variables no numéricas, de cara a qué tipo de encoding utlizar más adelante. En este caso vemos que se aprecia cierto orden entre las variables, por lo que me decanto por un OrdinarEncoder.
 
 Después, se visualizan los outliers con el gráfico `boxplot` de Seaborn y se crea una matriz de correlación con el gráfico `heatmap` de Seaborn.
